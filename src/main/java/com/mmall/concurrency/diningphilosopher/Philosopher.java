@@ -29,7 +29,11 @@ public class Philosopher implements Runnable {
 
     public void eating() throws InterruptedException {
         this.status = StatusEnum.EATING;
-        Thread.sleep((int) (Math.random() * 100));
+        if (Math.random() > 0.9){
+            Thread.sleep(100000);
+        }else {
+            Thread.sleep((int) (Math.random() * 100));
+        }
 //        this.status = StatusEnum.THINKING;
     }
 

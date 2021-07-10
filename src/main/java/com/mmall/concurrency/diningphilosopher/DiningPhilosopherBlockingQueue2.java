@@ -133,11 +133,12 @@ public class DiningPhilosopherBlockingQueue2 implements Runnable {
 
     @Override
     public void run() {
-        ExecutorService pool = Executors.newFixedThreadPool(6);
+        ExecutorService pool = Executors.newFixedThreadPool(7);
         for (int i = 0; i < 5; i++) {
             pool.submit(new Worker());
         }
         pool.submit(new ContentionManager());
+        pool.submit(new InterruptingWorker());
     }
 
     public static void main(String[] args) {
